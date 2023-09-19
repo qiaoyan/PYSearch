@@ -48,8 +48,13 @@
             language = @"en";
         }
         
+        BOOL RTL = [[NSUserDefaults standardUserDefaults] boolForKey:@"RTL"];
+        if (RTL){
+            bundle = [NSBundle bundleWithPath:[[NSBundle py_searchBundle] pathForResource:@"ug-CN" ofType:@"lproj"]];
+        }else{
+            bundle = [NSBundle bundleWithPath:[[NSBundle py_searchBundle] pathForResource:@"zh-Hans" ofType:@"lproj"]];
+        }
         // Find resources from `PYSearch.bundle`
-        bundle = [NSBundle bundleWithPath:[[NSBundle py_searchBundle] pathForResource:language ofType:@"lproj"]];
     }
     value = [bundle localizedStringForKey:key value:value table:nil];
     return [[NSBundle mainBundle] localizedStringForKey:key value:value table:nil];
