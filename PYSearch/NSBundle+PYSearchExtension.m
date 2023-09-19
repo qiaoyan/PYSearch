@@ -54,6 +54,7 @@
         }else{
             bundle = [NSBundle bundleWithPath:[[NSBundle py_searchBundle] pathForResource:@"zh-Hans" ofType:@"lproj"]];
         }
+        
         // Find resources from `PYSearch.bundle`
     }
     value = [bundle localizedStringForKey:key value:value table:nil];
