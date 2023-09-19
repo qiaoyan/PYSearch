@@ -1,9 +1,9 @@
 "PYSearchSearchPlaceholderText" = "搜索内容";
-"PYSearchHotSearchText" = "热门搜索";
-"PYSearchSearchHistoryText" = "搜索历史";
-"PYSearchEmptySearchHistoryText" = "清空搜索历史";
+"PYSearchHotSearchText" = "كۆپ ئىزدەلگەنلىرى";
+"PYSearchSearchHistoryText" = "ئىزدەلگەنلىرى";
+"PYSearchEmptySearchHistoryText" = "ئىزدەلگەنلىرىنى ئۆچۈرۈش";
 
-"PYSearchEmptyButtonText" = "清空";
-"PYSearchEmptySearchHistoryLogText" = "清空搜索历史";
-"PYSearchCancelButtonText" = "取消";
-"PYSearchBackButtonText" = "返回";
+"PYSearchEmptyButtonText" = "ئىزدەلگەنلىرىنى ئۆچۈرۈش";
+"PYSearchEmptySearchHistoryLogText" = "ئىزدەلگەنلىرىنى ئۆچۈرۈش";
+"PYSearchCancelButtonText" = "بىكار قىلىش";
+"PYSearchBackButtonText" = "قايتىش";
