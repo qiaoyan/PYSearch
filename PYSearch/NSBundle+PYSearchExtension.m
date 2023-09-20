@@ -32,8 +32,8 @@
 
 + (NSString *)py_localizedStringForKey:(NSString *)key value:(NSString *)value
 {
-    static NSBundle *bundle = nil;
-    if (nil == bundle) {
+     NSBundle *bundle = nil;
+//    if (nil == bundle) {
         NSString *language = [NSLocale preferredLanguages].firstObject;
         if ([language hasPrefix:@"en"]) language = @"en";
         else if ([language hasPrefix:@"es"]) language = @"es";
@@ -56,7 +56,7 @@
         }
         
         // Find resources from `PYSearch.bundle`
-    }
+//    }
     value = [bundle localizedStringForKey:key value:value table:nil];
     return [[NSBundle mainBundle] localizedStringForKey:key value:value table:nil];
 }
