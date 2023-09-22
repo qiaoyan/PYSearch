@@ -412,9 +412,11 @@
     self.navigationController.navigationBar.backIndicatorImage = nil;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
     UIButton *cancleButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    [cancleButton setImage: [NSBundle py_imageNamed:@"cancel"] forState:UIControlStateNormal];
+
 //    cancleButton.titleLabel.adjustsFontSizeToFitWidth =  YES;
-    cancleButton.titleLabel.font = [UIFont systemFontOfSize:12.0f];
-    [cancleButton setTitle:[NSBundle py_localizedStringForKey:PYSearchCancelButtonText] forState:UIControlStateNormal];
+//    cancleButton.titleLabel.font = [UIFont systemFontOfSize:12.0f];
+//    [cancleButton setTitle:[NSBundle py_localizedStringForKey:PYSearchCancelButtonText] forState:UIControlStateNormal];
     [cancleButton addTarget:self action:@selector(cancelDidClick)  forControlEvents:UIControlEventTouchUpInside];
     cancleButton.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     cancleButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
