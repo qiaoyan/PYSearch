@@ -475,16 +475,8 @@
     searchBar.placeholder = [NSBundle py_localizedStringForKey:PYSearchSearchPlaceholderText];
     searchBar.backgroundImage = [NSBundle py_imageNamed:@"clearImage"];
     searchBar.delegate = self;
-    for (UIView *subView in [[searchBar.subviews lastObject] subviews]) {
-        if ([[subView class] isSubclassOfClass:[UITextField class]]) {
-            UITextField *textField = (UITextField *)subView;
-            textField.font = [UIFont systemFontOfSize:16];
-            _searchTextField = textField;
-            break;
-        }
-    }
-    self.searchBar = searchBar;
     
+    self.searchBar = searchBar;
     UIView *headerView = [[UIView alloc] init];
     headerView.py_width = PYScreenW;
     headerView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
@@ -1306,6 +1298,14 @@
     
     return cell;
 }
+- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section
+{
+    // Background color
+    view.tintColor = [UIColor whiteColor];//[UIColor colorWithRed:77.0/255.0 green:162.0/255.0 blue:217.0/255.0 alpha:1.0];
+    // Text Color
+    UITableViewHeaderFooterView *header = (UITableViewHeaderFooterView *)view;
+    header.textLabel.font = [UIFont systemFontOfSize:12.0f];
+}
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
@@ -1359,3 +1359,4 @@
 }
 
 @end
+
