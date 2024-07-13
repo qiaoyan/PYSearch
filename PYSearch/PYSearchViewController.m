@@ -175,10 +175,15 @@
                 [leftLayoutConstraint setConstant:PYSEARCH_MARGIN - navigationBarLayoutMargins.left];
             }
         }
-        searchBar.py_height = self.view.py_width > self.view.py_height ? 24 : 30;
-        searchBar.py_width = self.view.py_width - adaptWidth - PYSEARCH_MARGIN;
-        searchField.frame = searchBar.bounds;
-        cancelButton.py_width = self.cancelButtonWidth;
+        if (searchBar) {
+            searchBar.py_height = self.view.py_width > self.view.py_height ? 24 : 30;
+            searchBar.py_width = self.view.py_width - adaptWidth - PYSEARCH_MARGIN;
+            if (searchField) {
+                searchField.frame = searchBar.bounds;
+            }
+            cancelButton.py_width = self.cancelButtonWidth;
+        }
+        
     } else {
         titleView.py_y = self.view.py_width > self.view.py_height ? 4 : 7;
         titleView.py_height = self.view.py_width > self.view.py_height ? 24 : 30;
@@ -426,7 +431,7 @@
     self.cancelBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:cancleButton];
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeSystem];
     UIImage *backImage = [NSBundle py_imageNamed:@"back"];
-    backButton.titleLabel.font = [UIFont systemFontOfSize:17];
+//    backButton.titleLabel.font = [UIFont systemFontOfSize:17];
     [backButton setTitle:[NSBundle py_localizedStringForKey:PYSearchBackButtonText] forState:UIControlStateNormal];
     [backButton setImage:backImage forState:UIControlStateNormal];
     [backButton addTarget:self action:@selector(backDidClick)  forControlEvents:UIControlEventTouchUpInside];
@@ -473,7 +478,7 @@
     }
     self.navigationItem.titleView = titleView;
     searchBar.placeholder = [NSBundle py_localizedStringForKey:PYSearchSearchPlaceholderText];
-    searchBar.backgroundImage = [NSBundle py_imageNamed:@"clearImage"];
+//    searchBar.backgroundImage = [NSBundle py_imageNamed:@"clearImage"];
     searchBar.delegate = self;
     
     self.searchBar = searchBar;
@@ -522,9 +527,9 @@
 {
     UILabel *titleLabel = [[UILabel alloc] init];
     titleLabel.text = title;
-    titleLabel.font = [UIFont systemFontOfSize:13];
+//    titleLabel.font = [UIFont systemFontOfSize:13];
     titleLabel.tag = 1;
-    titleLabel.textColor = PYTextColor;
+//    titleLabel.textColor = PYTextColor;
     [titleLabel sizeToFit];
     titleLabel.py_x = 0;
     titleLabel.py_y = 0;
