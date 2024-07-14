@@ -136,13 +136,13 @@
     UIEdgeInsets navigationBarLayoutMargins = UIEdgeInsetsZero;
     UINavigationBar *navigationBar = self.navigationController.navigationBar;
     
-    if (@available(iOS 8.0, *)) {
-        backButton.layoutMargins = UIEdgeInsetsMake(8, 0, 8, 8);
-        backButtonLayoutMargins = backButton.layoutMargins;
-        cancelButton.layoutMargins = UIEdgeInsetsMake(8, 8, 8, 0);
-        cancelButtonLayoutMargins = cancelButton.layoutMargins;
-        navigationBarLayoutMargins = navigationBar.layoutMargins;
-    }
+//    if (@available(iOS 8.0, *)) {
+//        backButton.layoutMargins = UIEdgeInsetsMake(8, 0, 8, 8);
+//        backButtonLayoutMargins = backButton.layoutMargins;
+//        cancelButton.layoutMargins = UIEdgeInsetsMake(8, 8, 8, 0);
+//        cancelButtonLayoutMargins = cancelButton.layoutMargins;
+//        navigationBarLayoutMargins = navigationBar.layoutMargins;
+//    }
     
     if (self.searchViewControllerShowMode == PYSearchViewControllerShowModePush) {
         UIButton *backButton = self.navigationItem.leftBarButtonItem.customView;
@@ -178,6 +178,10 @@
         if (searchBar) {
             searchBar.py_height = self.view.py_width > self.view.py_height ? 24 : 30;
             searchBar.py_width = self.view.py_width - adaptWidth - PYSEARCH_MARGIN;
+            if (searchBar.py_width > 380) {
+//                searchBar.py_width -= self.navigationItem.leftBarButtonItem
+                searchBar.py_width -= 88;
+            }
             if (searchField) {
                 searchField.frame = searchBar.bounds;
             }
@@ -414,7 +418,7 @@
 {
     self.view.backgroundColor = [UIColor whiteColor];
     self.baseSearchTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.navigationController.navigationBar.backIndicatorImage = nil;
+//    self.navigationController.navigationBar.backIndicatorImage = nil;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
     UIButton *cancleButton = [UIButton buttonWithType:UIButtonTypeSystem];
     [cancleButton setImage: [NSBundle py_imageNamed:@"cancel"] forState:UIControlStateNormal];
