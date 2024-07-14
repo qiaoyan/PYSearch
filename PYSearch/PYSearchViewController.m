@@ -136,13 +136,13 @@
     UIEdgeInsets navigationBarLayoutMargins = UIEdgeInsetsZero;
     UINavigationBar *navigationBar = self.navigationController.navigationBar;
     
-//    if (@available(iOS 8.0, *)) {
-//        backButton.layoutMargins = UIEdgeInsetsMake(8, 0, 8, 8);
-//        backButtonLayoutMargins = backButton.layoutMargins;
-//        cancelButton.layoutMargins = UIEdgeInsetsMake(8, 8, 8, 0);
-//        cancelButtonLayoutMargins = cancelButton.layoutMargins;
-//        navigationBarLayoutMargins = navigationBar.layoutMargins;
-//    }
+    if (@available(iOS 8.0, *)) {
+        backButton.layoutMargins = UIEdgeInsetsMake(8, 0, 8, 8);
+        backButtonLayoutMargins = backButton.layoutMargins;
+        cancelButton.layoutMargins = UIEdgeInsetsMake(8, 8, 8, 0);
+        cancelButtonLayoutMargins = cancelButton.layoutMargins;
+        navigationBarLayoutMargins = navigationBar.layoutMargins;
+    }
     
     if (self.searchViewControllerShowMode == PYSearchViewControllerShowModePush) {
         UIButton *backButton = self.navigationItem.leftBarButtonItem.customView;
@@ -178,9 +178,14 @@
         if (searchBar) {
             searchBar.py_height = self.view.py_width > self.view.py_height ? 24 : 30;
             searchBar.py_width = self.view.py_width - adaptWidth - PYSEARCH_MARGIN;
-            if (searchBar.py_width > 360) {
-//                searchBar.py_width -= self.navigationItem.leftBarButtonItem
+            if (searchBar.py_width > 360 && self.searchViewControllerShowMode == PYSearchViewControllerShowModePush) {
                 searchBar.py_width -= adaptWidth*2;
+            } else if (searchBar.py_width > 360 && self.searchViewControllerShowMode == PYSearchViewControllerShowModeModal) {
+                if (searchBar.py_width > 368) {
+                    searchBar.py_width -= adaptWidth*2;
+                } else {
+                    searchBar.py_width -= PYSEARCH_MARGIN;
+                }
             }
             if (searchField) {
                 searchField.frame = searchBar.bounds;
