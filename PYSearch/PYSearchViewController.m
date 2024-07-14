@@ -178,9 +178,9 @@
         if (searchBar) {
             searchBar.py_height = self.view.py_width > self.view.py_height ? 24 : 30;
             searchBar.py_width = self.view.py_width - adaptWidth - PYSEARCH_MARGIN;
-            if (searchBar.py_width > 380) {
+            if (searchBar.py_width > 360) {
 //                searchBar.py_width -= self.navigationItem.leftBarButtonItem
-                searchBar.py_width -= 88;
+                searchBar.py_width -= adaptWidth*2;
             }
             if (searchField) {
                 searchField.frame = searchBar.bounds;
